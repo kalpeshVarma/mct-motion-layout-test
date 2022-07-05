@@ -4,14 +4,104 @@
 
 
     <Transition
-        app:constraintSetEnd="@layout/activity_motion_test_2"
-        app:constraintSetStart="@layout/activity_motion_test"
-        app:duration="1000">
+        app:constraintSetEnd="@+id/halfState"
+        app:constraintSetStart="@+id/baseState">
 
-        <OnSwipe
-            app:dragDirection="dragUp"
-            app:touchAnchorId="@id/scrollview"
-            app:touchAnchorSide="top" />
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:rotationY="90"
+                app:framePosition="25"
+                app:motionTarget="@+id/badgeIcon" />
+
+            <KeyAttribute
+                android:rotationY="180"
+                app:framePosition="50"
+                app:motionTarget="@+id/badgeIcon" />
+
+            <KeyAttribute
+                android:rotationY="270"
+                app:framePosition="75"
+                app:motionTarget="@+id/badgeIcon" />
+
+            <KeyAttribute
+                android:rotationY="360"
+                app:framePosition="100"
+                app:motionTarget="@+id/badgeIcon" />
+
+
+        </KeyFrameSet>
 
     </Transition>
+
+    <Transition
+        app:constraintSetEnd="@+id/endState"
+        app:constraintSetStart="@+id/baseState"
+        app:duration="1000" />
+
+    <ConstraintSet android:id="@+id/baseState">
+        <Constraint android:id="@+id/badgeIcon">
+
+            <Layout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </Constraint>
+
+        <Constraint android:id="@+id/bgOverlay">
+            <PropertySet android:alpha="0" />
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/halfState">
+
+        <Constraint android:id="@id/badgeIcon">
+
+            <Layout
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.25" />
+
+            <Motion
+                app:motionStagger="@integer/material_motion_duration_long_2"
+                app:transitionEasing="@string/material_motion_easing_decelerated" />
+
+        </Constraint>
+
+        <Constraint android:id="@+id/bgOverlay">
+            <PropertySet android:alpha="1" />
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endState">
+        <Constraint android:id="@+id/badgeIcon">
+
+            <Layout
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </Constraint>
+
+
+        <Constraint android:id="@+id/bgOverlay">
+            <PropertySet android:alpha="0" />
+        </Constraint>
+
+    </ConstraintSet>
+
+
 </MotionScene>
