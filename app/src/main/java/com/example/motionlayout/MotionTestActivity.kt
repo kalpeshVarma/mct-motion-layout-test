@@ -1,7 +1,6 @@
 package com.example.motionlayout
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -46,7 +45,7 @@ class MotionTestActivity : AppCompatActivity() {
     }
 
     fun startTransition(view: View) {
-        when (motionLayout.currentState ) {
+        when (motionLayout.currentState) {
             R.id.baseState -> motionLayout.transitionToState(R.id.halfState)
             R.id.halfState -> motionLayout.transitionToState(R.id.endState)
             R.id.endState -> motionLayout.transitionToState(R.id.baseState)
